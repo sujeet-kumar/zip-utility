@@ -14,7 +14,7 @@ class Zip
 			!empty($dest_path) or $dest_path = './compressed_' . time() . '.' . self::ZIP_EXT;
 			
 			$zip = new ZipArchive();
-			if($zip->open($dest_path, ZipArchive::CREATE | ZipArchive::OVERWRITE)){
+			if($zip->open($dest_path, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true){
 				foreach($source_path as $path){
 					
 					if(is_file($path)) $zip->addFile($path, basename($path));
@@ -32,7 +32,7 @@ class Zip
 			!empty($dest_path) or $dest_path = './' . $path_info['basename'] . '.' . self::ZIP_EXT;
 			
 			$zip = new ZipArchive();
-			if($zip->open($dest_path, ZipArchive::CREATE | ZipArchive::OVERWRITE)){
+			if($zip->open($dest_path, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true){
 				if(is_file($source_path)){
 					
 					$zip->addFile($source_path, $base_name);
@@ -55,7 +55,7 @@ class Zip
 	
 	public static function extract($source_path, $dest_path = ''){
 		$zip = new ZipArchive();
-		if($source_path = realpath($source_path) and $zip->open($source_path)){
+		if($source_path = realpath($source_path) and $zip->open($source_path) === true){
 			!empty($dest_path) or $dest_path = './' . pathinfo($source_path, PATHINFO_FILENAME);
 			$ex = $zip->extractTo($dest_path);
 			$zip->close();
@@ -111,7 +111,7 @@ class Zip
 	
 	public function addComment($source_path, $text = 'sha1'){
 		$zip = new ZipArchive();
-		if(!empty($text) and $source_path = realpath($source_path) and $zip->open($source_path)){
+		if(!empty($text) and $source_path = realpath($source_path) and $zip->open($source_path) === true){
 			if(in_array($text, array('md5', 'sha1'))){
 				$func = $text.'_file';
 				$text = ($checksum = $func($source_path)) ? $checksum : '';
@@ -124,7 +124,18 @@ class Zip
 		}
 	}
 	
-	private static function _processZip($path, &$zip, $path_pos, $excludes){
+	public function getComment($source_path){
+		$zip = new ZipArchive();
+		if($source_path = realpath($source_path) and $zip->open($source_path) === true){
+			$comment = $zip->getArchiveComment();
+			$zip->close();
+			return $comment;
+		}else{
+			return false;
+		}
+	}
+	
+	protected static function _processZip($path, &$zip, $path_pos, $excludes){
 		$handle = opendir($path);
 		while(false !== $f = readdir($handle)){
 			if($f == '.' or $f == '..' or (is_array($excludes) and in_array($f, $excludes))) continue;
@@ -146,7 +157,7 @@ class Zip
 		closedir($handle);
 	}
 	
-	private static function _htmlList($path_tree){
+	protected static function _htmlList($path_tree){
 		$html_list = '';
 		if(! empty($path_tree)){
 			$html_list .= '<ul class="zip-list">';
