@@ -109,6 +109,21 @@ class Zip
 		return $returnArr;
 	}
 	
+	public function addComment($source_path, $text = 'sha1'){
+		$zip = new ZipArchive();
+		if(!empty($text) and $source_path = realpath($source_path) and $zip->open($source_path)){
+			if(in_array($text, array('md5', 'sha1'))){
+				$func = $text.'_file';
+				$text = ($checksum = $func($source_path)) ? $checksum : '';
+			}
+			$ret = $zip->setArchiveComment($text);
+			$zip->close();
+			return $ret;
+		}else{
+			return false;
+		}
+	}
+	
 	private static function _processZip($path, &$zip, $path_pos, $excludes){
 		$handle = opendir($path);
 		while(false !== $f = readdir($handle)){
