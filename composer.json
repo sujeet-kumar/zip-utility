@@ -1,0 +1,21 @@
+{
+    "name": "sujeet-kumar/zip-utility",
+    "description": "Zip utility class",
+    "type": "library",
+    "keywords": ["zip", "archive", "compression"],
+    "homepage": "https://github.com/sujeet-kumar/zip-utility/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sujeet Kumar",
+            "email": "sujeetkv90@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-zip": "*"
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    },
+    "minimum-stability": "dev"
+}
