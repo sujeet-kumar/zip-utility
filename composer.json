@@ -15,7 +15,9 @@
         "ext-zip": "*"
     },
     "autoload": {
-        "classmap": ["src/"]
+        "psr-4": {
+            "SujeetKumar\\ZipUtility\\": "src/"
+        }
     },
     "minimum-stability": "dev"
 }

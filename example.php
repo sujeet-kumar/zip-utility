@@ -1,6 +1,8 @@
 <?php
 require_once './src/Zip.php';
 
+use SujeetKumar\ZipUtility\Zip;
+
 Zip::compress('./dir', './zipfile.zip');
 
 Zip::compress(array('./example.php','./test.php','./zipfile.zip'), './newfilename.zip');
