@@ -1,5 +1,5 @@
 <?php
-namespace SujeetKumar\ZipUtility;
+namespace SujeetKV\ZipUtility;
 
 use \ZipArchive;
 
@@ -7,9 +7,8 @@ use \ZipArchive;
  * Zip utility class
  *
  * @author Sujeet <sujeetkv90@gmail.com>
- * @link https://github.com/sujeet-kumar/zip-utility
+ * @link https://github.com/sujeetkv/zip-utility
  */
-
 class Zip
 {
     const ZIP_EXT = 'zip';

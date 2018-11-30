@@ -1,7 +1,7 @@
 <?php
 require_once './src/Zip.php';
 
-use SujeetKumar\ZipUtility\Zip;
+use SujeetKV\ZipUtility\Zip;
 
 Zip::compress('./dir', './zipfile.zip');
 

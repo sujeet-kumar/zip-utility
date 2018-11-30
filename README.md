@@ -5,15 +5,16 @@ Zip utility class
 
 Install using composer:
 
-    {
-        "repositories": [
-            {
-                "type": "vcs",
-                "url": "https://github.com/sujeet-kumar/zip-utility"
-            }
-        ],
-        "require": {
-            "sujeet-kumar/zip-utility": "dev-master"
+```json
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/sujeetkv/zip-utility"
         }
+    ],
+    "require": {
+        "sujeetkv/zip-utility": "dev-master"
     }
-
+}
+```

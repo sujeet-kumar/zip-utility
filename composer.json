@@ -1,9 +1,9 @@
 {
-    "name": "sujeet-kumar/zip-utility",
+    "name": "sujeetkv/zip-utility",
     "description": "Zip utility class",
     "type": "library",
     "keywords": ["zip", "archive", "compression"],
-    "homepage": "https://github.com/sujeet-kumar/zip-utility/",
+    "homepage": "https://github.com/sujeetkv/zip-utility/",
     "license": "MIT",
     "authors": [
         {
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SujeetKumar\\ZipUtility\\": "src/"
+            "SujeetKV\\ZipUtility\\": "src/"
         }
     },
     "minimum-stability": "dev"
